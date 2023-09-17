@@ -1,4 +1,5 @@
-const { Thought, User } = require('../models');
+const User = require('../models/User');
+const Thought = require('../models/thought');
 
 module.exports = {
     async getThoughts(req, res) {
@@ -14,6 +15,8 @@ module.exports = {
     async getSingleThought(req, res) {
         try {
             const thought = await Thought.findOne({ _id: req.params.thoughtId });
+            console.log("query result:", thought)
+           
             if (!thought) {
                 return res.status(404).json({ message: 'No thought found with this id!' });
             }

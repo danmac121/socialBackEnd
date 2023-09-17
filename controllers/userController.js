@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Thought = require('../models/thought');
 
 module.exports = {
   async getUsers(req, res) {
@@ -50,8 +51,9 @@ module.exports = {
 
   async deleteUser(req, res) {
     try {
+        console.log("Attempting to find thoughts for user:", req.params.userId);
       const userThoughts = await Thought.find({ username: req.params.userId });
-
+      console.log("Found thoughts:", userThoughts);
       if(userThoughts.length > 0) {
           // 2. Delete those thoughts
           await Thought.deleteMany({ username: req.params.userId });
