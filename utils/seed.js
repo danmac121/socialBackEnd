@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const User = require('../models/User');
 const Thought = require('../models/thought');
 
-mongoose.connect('mongodb://localhost/UsersAndThoughts', {
+mongoose.connect('mongodb://localhost/socialBackend', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 
